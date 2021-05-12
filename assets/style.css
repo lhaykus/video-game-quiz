@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#title{
+    font-size: 300%;
+    text-align: center;
+    font-weight: bolder;
+    color: rgb(19, 185, 207);
+    
+
+}
+
+.startButton {
+    font-size: 300%;
+    text-align: center;
+    margin: 50;
+
+}
+
+#container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+
+
+.choiceButtons {
+    font-size: 500%;
+}
+
+#button1, #button2, #button3, #button4 {
+    background-color: hotpink;
+    font-size: 150%;
+    color: white;
+    width: 300px;
+    height: 150%;
+    border:3px solid black;
+    margin: 10 40 10 0;
+    padding: 10 10;
+    align-items: center;
+}
