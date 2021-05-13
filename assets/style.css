@@ -13,39 +13,43 @@ body {
     text-align: center;
     font-weight: bolder;
     color: rgb(19, 185, 207);
-    
 
 }
 
-.startButton {
+#startButton {
     font-size: 300%;
     text-align: center;
-    margin: 50;
+    margin: 50px;
 
 }
 
-#container {
+#quiz-container {
     display: flex;
-    position: relative;
-    flex-direction: column;
+    flex-direction: center;
     justify-content: center;
-    
+    border-radius: 2px black;
+    width: 80%;
+    display: grid;
+    padding: 50px;
 }
 
 
+.buttons {
+    font-size: 250%;
+    text-align: center;
+    margin: 10px;
+    width: 100%;
 
-.choiceButtons {
-    font-size: 500%;
+
 }
 
-#button1, #button2, #button3, #button4 {
-    background-color: hotpink;
-    font-size: 150%;
-    color: white;
-    width: 300px;
-    height: 150%;
-    border:3px solid black;
-    margin: 10 40 10 0;
-    padding: 10 10;
-    align-items: center;
+#question {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+#timer {
+    font-size: 200%;
+    margin-right: 200px;
+    margin-bottom: 50px;
 }
