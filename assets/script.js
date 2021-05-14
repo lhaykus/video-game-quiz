@@ -7,7 +7,7 @@ const choiceBtn = document.getElementById("choiceBtn");
 const buttons = document.getElementsByClassName("buttons");
 const questionSection = document.getElementById("question-section");
 const choiceSection = document.getElementsByClassName("#choices");
-const image = document.getElementById ('images');
+const images = document.getElementById ("images");
 const A = document.getElementById ("A");
 const B = document.getElementById ("B");
 const C = document.getElementById ("C");
@@ -18,7 +18,7 @@ const D = document.getElementById ("D");
 //Create an array with objects of the questions, answers and possible answers
 const questions = [ {
     question: "Who created the T-virus in Resident Evil?",
-    imgScr: "./assets/images.resident-evil.png",
+    imgSrc: "./assets/images/resident-evil.png",
     A: "The Racoon Corporation",
     B: "The Umbrella Corporation",
     C: "Dynamite Corporation",
@@ -27,7 +27,7 @@ const questions = [ {
     
 }, { 
     question: "What is the alien race that has to battle Predator in Alien vs Predator called?",
-   
+    imgSrc: ""
     A: "Kaminoan",
     B: "Polymorph", 
     C: "Xenomorph", 
@@ -102,6 +102,7 @@ function showQuestion(question) {
     //Displaying the question by changing the text of questionEl by grabbing the question text out of the object 
     questionEl.textContent = question.question;
    // changing the text for each choice by grabbing the current question out of the questions array and assigning the choiceA-D in the current question
+    images.innerHTML = "<img src=" + questions[currentQuestion].imgSrc + ">";
     A.textContent = questions[currentQuestion].A;
     B.textContent = questions[currentQuestion].B;
     C.textContent = questions[currentQuestion].C;

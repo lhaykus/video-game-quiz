@@ -41,7 +41,6 @@ body {
     text-align: center;
     align-items: center;
     margin: 5px;
-    padding-left: 100px;
     width: 60%;
     background-image: linear-gradient(rgba(0, 255, 255, 0.918), white);
     border-radius: 5cm;
@@ -69,4 +68,11 @@ body {
 
 .otherButtons {
     text-align: center;
+}
+
+#images {
+    margin:10px;
+    float: right;
+    width: 150px;
+    height: 60px;
 }
