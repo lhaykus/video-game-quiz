@@ -54,7 +54,7 @@ const questions = [ {
 }, 
 {
     question: "In Futurama, what is Fry's favorite soft drink that is highly addictive?",
-    imgSrc: "./assets/images/futurama.jpg",
+    imgSrc: "./assets/images/futurama2.jpg",
     A: "Nuka-Cola",
     B: "Slurm",
     C: "Buzz Cola",
