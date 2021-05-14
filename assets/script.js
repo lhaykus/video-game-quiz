@@ -36,7 +36,7 @@ const questions = [ {
 }, 
 {
     question: "In Harry Potter, what was the name of Hagrid's hippogriff?",
-    imgSrc: "./assets/images/Buckbeak.jpg",
+    imgSrc: "./assets/images/buckbeak2.jpg",
     A: "Buckbeak",
     B: "Fawkes", 
     C: "Aragog", 
@@ -44,8 +44,8 @@ const questions = [ {
     answer: "Buckbeak"
 }, 
 {
-    question: "In Lord of the Rings, who was NOT a part of the fellowship of the ring?",
-    imgSrc: "./assets/images/lord-of-the-rings.jpg",
+    question: "In Lord of the Rings, who was NOT a member of the fellowship of the ring?",
+    imgSrc: "./assets/images/fellowship.jpg",
     A: "Aragorn", 
     B: "Gimli",
     C: "Frodo",
