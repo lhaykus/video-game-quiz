@@ -38,8 +38,9 @@ body {
 .buttons {
     font-size: 250%;
     text-align: center;
+    align-items: center;
     margin: 10px;
-    width: 100%;
+    width: 60%;
 
 
 }
