@@ -7,52 +7,55 @@ const choiceBtn = document.getElementById("choiceBtn");
 const buttons = document.getElementsByClassName("buttons");
 const questionSection = document.getElementById("question-section");
 const choiceSection = document.getElementsByClassName("#choices");
-const choiceA = document.getElementById ("A");
-const choiceB = document.getElementById ("B");
-const choiceC = document.getElementById ("C");
-const choiceD = document.getElementById ("D");
+const image = document.getElementById ('images');
+const A = document.getElementById ("A");
+const B = document.getElementById ("B");
+const C = document.getElementById ("C");
+const D = document.getElementById ("D");
 
 
 
 //Create an array with objects of the questions, answers and possible answers
 const questions = [ {
     question: "Who created the T-virus in Resident Evil?",
-    choiceA: "The Racoon Corporation",
-    choiceB: "The Umbrella Corporation",
-    choiceC: "Dynamite Corporation",
-    choiceD: "Boomerang Corporation",
+    imgScr: "./assets/images.resident-evil.png",
+    A: "The Racoon Corporation",
+    B: "The Umbrella Corporation",
+    C: "Dynamite Corporation",
+    D: "Boomerang Corporation",
     answer: "The Umbrella Corporation"
     
 }, { 
     question: "What is the alien race that has to battle Predator in Alien vs Predator called?",
-    choiceA: "Kaminoan",
-    choiceB: "Polymorph", 
-    choiceC: "Xenomorph", 
-    choiceD: "Ortolan",
+   
+    A: "Kaminoan",
+    B: "Polymorph", 
+    C: "Xenomorph", 
+    D: "Ortolan",
     answer: "Xenomorph"
 }, 
 {
     question: "In Harry Potter, what was the name of Hagrid's hippogriff?",
-    choiceA: "Buckbeak",
-    choiceB: "Fawkes", 
-    choiceC: "Aragog", 
-    choiceD: "Hedwig",
+    A: "Buckbeak",
+    B: "Fawkes", 
+    C: "Aragog", 
+    D: "Hedwig",
     answer: "Buckbeak"
 }, 
 {
     question: "In Lord of the Rings, who was NOT a part of the fellowship of the ring?",
-    choiceA: "Aragorn", 
-    choiceB: "Gimli",
-    choiceC: "Frodo",
-    choiceD: "Eowyn",
+    A: "Aragorn", 
+    B: "Gimli",
+    C: "Frodo",
+    D: "Eowyn",
     answer: "Eowyn"
 }, 
 {
     question: "In Futurama, what is Fry's favorite soft drink that is highly addictive?",
-    choiceA: "Nuka-Cola",
-    choiceB: "Slurm",
-    choiceC: "Buzz Cola",
-    choiceD: "Butterbeer",
+    A: "Nuka-Cola",
+    B: "Slurm",
+    C: "Buzz Cola",
+    D: "Butterbeer",
     answer: "Slurm"
 },
 ];
@@ -99,15 +102,16 @@ function showQuestion(question) {
     //Displaying the question by changing the text of questionEl by grabbing the question text out of the object 
     questionEl.textContent = question.question;
    // changing the text for each choice by grabbing the current question out of the questions array and assigning the choiceA-D in the current question
-    choiceA.textContent = questions[currentQuestion].choiceA;
-    choiceB.textContent = questions[currentQuestion].choiceB;
-    choiceC.textContent = questions[currentQuestion].choiceC;
-    choiceD.textContent = questions[currentQuestion].choiceD;
+    A.textContent = questions[currentQuestion].A;
+    B.textContent = questions[currentQuestion].B;
+    C.textContent = questions[currentQuestion].C;
+    D.textContent = questions[currentQuestion].D;
   
 }
 
 function selectAnswer () {
-currentQuestion ++;
+    //current question index increases aka goes to next question
+    currentQuestion ++;
     nextQuestion();
     console.log(selectAnswer);
 }
