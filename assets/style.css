@@ -53,6 +53,7 @@ body {
     font-size: 200%;
     font-weight: bold;
     text-align: center;
+    
 
 }
 
@@ -70,9 +71,3 @@ body {
     text-align: center;
 }
 
-#images {
-    margin:10px;
-    float: right;
-    width: 150px;
-    height: 60px;
-}

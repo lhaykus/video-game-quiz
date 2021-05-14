@@ -27,7 +27,7 @@ const questions = [ {
     
 }, { 
     question: "What is the alien race that has to battle Predator in Alien vs Predator called?",
-    imgSrc: ""
+    imgSrc: "./assets/images/alien.jpg",
     A: "Kaminoan",
     B: "Polymorph", 
     C: "Xenomorph", 
@@ -36,6 +36,7 @@ const questions = [ {
 }, 
 {
     question: "In Harry Potter, what was the name of Hagrid's hippogriff?",
+    imgSrc: "./assets/images/Buckbeak.jpg",
     A: "Buckbeak",
     B: "Fawkes", 
     C: "Aragog", 
@@ -44,6 +45,7 @@ const questions = [ {
 }, 
 {
     question: "In Lord of the Rings, who was NOT a part of the fellowship of the ring?",
+    imgSrc: "./assets/images/lord-of-the-rings.jpg",
     A: "Aragorn", 
     B: "Gimli",
     C: "Frodo",
@@ -52,6 +54,7 @@ const questions = [ {
 }, 
 {
     question: "In Futurama, what is Fry's favorite soft drink that is highly addictive?",
+    imgSrc: "./assets/images/futurama.jpg",
     A: "Nuka-Cola",
     B: "Slurm",
     C: "Buzz Cola",
