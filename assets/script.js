@@ -149,7 +149,9 @@ function selectAnswer(usersChoice) {
     //If the usersChoice is equal to the answer for the current question, then the score increases
     if (usersChoice === questions[currentQuestion].answer) {
         score++;
-
+    }
+    if (usersChoice !== questions[currentQuestion].answer) {
+        secondsLeft = secondsLeft-10;
     }
     //If the current question is the last question, endQuiz
     if (currentQuestion === lastQuestion) {
