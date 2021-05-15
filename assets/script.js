@@ -3,10 +3,9 @@ const timer = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
 const quiz = document.getElementById("quiz-container");
 const questionEl = document.getElementById("question");
-const choiceBtn = document.getElementById("choiceBtn");
 const buttons = document.getElementsByClassName("buttons");
 const questionSection = document.getElementById("question-section");
-const choiceSection = document.getElementsByClassName("#choices");
+const scoreEl= document.getElementById ("score");
 const images = document.getElementById("images");
 const A = document.getElementById("A");
 const B = document.getElementById("B");
@@ -16,14 +15,15 @@ const D = document.getElementById("D");
 
 
 //Create an array with objects of the questions, answers and possible answers
-const questions = [{
+const questions = [
+    {
     question: "Who created the T-virus in Resident Evil?",
     imgSrc: "./assets/images/resident-evil.png",
     A: "The Racoon Corporation",
     B: "The Umbrella Corporation",
     C: "Dynamite Corporation",
     D: "Boomerang Corporation",
-    answer: "The Umbrella Corporation"
+    answer: "B"
 
 }, {
     question: "What is the alien race that has to battle Predator in Alien vs Predator called?",
@@ -32,7 +32,7 @@ const questions = [{
     B: "Polymorph",
     C: "Xenomorph",
     D: "Ortolan",
-    answer: "Xenomorph"
+    answer: "C"
 },
 {
     question: "In Harry Potter, what was the name of Hagrid's hippogriff?",
@@ -41,7 +41,7 @@ const questions = [{
     B: "Fawkes",
     C: "Aragog",
     D: "Hedwig",
-    answer: "Buckbeak"
+    answer: "A"
 },
 {
     question: "In Lord of the Rings, who was NOT a member of the fellowship of the ring?",
@@ -50,7 +50,7 @@ const questions = [{
     B: "Gimli",
     C: "Frodo",
     D: "Eowyn",
-    answer: "Eowyn"
+    answer: "D"
 },
 {
     question: "In Futurama, what is Fry's favorite soft drink that is highly addictive?",
@@ -59,7 +59,7 @@ const questions = [{
     B: "Slurm",
     C: "Buzz Cola",
     D: "Butterbeer",
-    answer: "Slurm"
+    answer: "B"
 },
 ];
 
@@ -67,25 +67,34 @@ const questions = [{
 //Declaring variables
 const lastQuestion = question.length - 1;
 let currentQuestion;
-const correctAnswers = 0;
-let choices = " ";
-const answer = "none";
+//let choices = " ";
+let answer = "none";
 let button;
 let choice;
+let usersChoice;
+let score;
+
 
 
 //When the start button is clicked, the quiz begins
 startButton.addEventListener("click", startQuiz)
-setTimer();
 
-//Create a start function to start the game
+
+//Create a start function to start the quiz when Start Quiz is clicked
+//Current question index is at 0, score it at 0, the startButton is hidden while the questions are displayed on the screen
+
 function startQuiz() {
+    setTimer();
     console.log("start");
     startButton.classList.add('hide');
     currentQuestion = 0;
+    score = 0;
     questionSection.classList.remove('hide');
     nextQuestion();
 }
+
+//Function for the timer, starts at 45 seconds, changes the HTML timer content and displays seconds left
+//If timer gets to 0 an alert will be displayed letting the player know they ran out of time and endQuiz function will be enabled
 
 function setTimer() {
     secondsLeft = 45;
@@ -97,7 +106,8 @@ function setTimer() {
         if (secondsLeft <= 0) {
             clearInterval(timerInterval);
             alert("Time's Up");
-           
+            endQuiz();
+
         }
     }, 1000);
 }
@@ -107,59 +117,52 @@ function setTimer() {
 
 
 //Function to go to the next question
-//Grabbing the current question out of the questions array
+//Displaying the current question index in the questions array
+
 function nextQuestion() {
     showQuestion(questions[currentQuestion]);
 }
 
-//Function to show question on screen 
+//Function to show questions on screen 
 
 function showQuestion(question) {
-    //Displaying the question by changing the text of questionEl by grabbing the question text out of the object 
+    //Displaying the question by changing the text of HTML questionEl by grabbing the question text out of the object 
     questionEl.textContent = question.question;
-    // changing the text for each choice by grabbing the current question out of the questions array and assigning the choiceA-D in the current question
+    // Displaying the answers and images that go with the current question the user is on 
     images.innerHTML = "<img src=" + questions[currentQuestion].imgSrc + ">";
     A.textContent = questions[currentQuestion].A;
     B.textContent = questions[currentQuestion].B;
     C.textContent = questions[currentQuestion].C;
     D.textContent = questions[currentQuestion].D;
-    if(currentQuestion === lastQuestion) {
+   // if (currentQuestion === lastQuestion) {
+   //     clearInterval(timer);
+   //     endQuiz();
+    }
+
+
+
+//Function to calculate whether the users choices were right and wrong
+//If right, the score increases and goes to the next question, until the last question is hit then it will endQuiz
+//If wrong, 10 seconds is taken out of the timer and then will continue onto next question, until last question is hit which will lead to endQuiz
+
+function selectAnswer(usersChoice) {
+    //If the usersChoice is equal to the answer for the current question, then the score increases
+    if (usersChoice === questions[currentQuestion].answer) {
+        score++;
+
+    }
+    //If the current question is the last question, endQuiz
+    if (currentQuestion === lastQuestion) {
         endQuiz();
-    }
-
-    
-}
-
-function selectAnswer() {
-    //current question index increases aka goes to next question
-    currentQuestion++;
-    nextQuestion();
-    console.log(selectAnswer);
-}
-
-//Function to check the answer with the users choice
-function checkAnswer(answer){
- //   If users choice matches the right answer, then correctAnswers score increaes
-   if(choice === questions[currentQuestion].answer) {
-      correctAnswers++;
-    checkAnswer.textContnet = "Correct!"
-
-   // Else if the users choice does NOT match the right answer, 10 seconds is taken off the timer
-   // and a message
+        //Else if the current question is not the last question, the next question will be showed 
     } else {
-       secondsLeft -=10;
-    secondsLeft.textContnet=totalTime;
-       checkAnswer.textContnet = "Wrong."
-
-    }
-    //If the current question is not the last question, then the next question will be displayed
-   if(currentQuestion < lastQuestion) {
-       currentQuestion++;
+        currentQuestion++;
         nextQuestion();
+        console.log(score);
     }
-    //If the current question is the last question, the timer will be cleared and the
-   if(currentQuestion >= lastQuestion) {
-        clearInterval(timer);
+}
 
-    };
+//When the last question is hit or the timer runs out, the endQuiz clears the timer
+function endQuiz() {
+    clearInterval(timer);
 }
