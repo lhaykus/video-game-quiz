@@ -1,6 +1,7 @@
 //Grabbing elements from the HTML document
 const timer = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
+const submitButton =document.getElementById("submitBtn");
 const quiz = document.getElementById("quiz-container");
 const questionEl = document.getElementById("question");
 const buttons = document.getElementsByClassName("buttons");
@@ -10,6 +11,7 @@ const images = document.getElementById("images");
 const scoreContainer = document.getElementById('score-container');
 const initialsInput = document.getElementById("initals");
 const scoreInput = document.getElementById("scoreRecord");
+const container = document.getElementsByClassName("container");
 const A = document.getElementById("A");
 const B = document.getElementById("B");
 const C = document.getElementById("C");
@@ -79,10 +81,12 @@ let usersChoice;
 let score;
 let timerInterval;
 
-scoreContainer.classList.add('hide');
+
 
 //When the start button is clicked, the quiz begins
-startButton.addEventListener("click", startQuiz)
+startButton.addEventListener("click", startQuiz);
+submitButton.addEventListener("click", )
+
 
 
 //Create a start function to start the quiz when Start Quiz is clicked

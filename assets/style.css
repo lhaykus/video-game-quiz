@@ -74,6 +74,7 @@ body {
 #score-container {
     margin-top: 1px;
     margin-bottom: 2px;
+    align-items: center;
 
 }
 
@@ -82,22 +83,24 @@ input {
     border-radius: 3px;
     font-size: 100%;
     line-height: 10px;
-    max-width: 100%;
-    margin-left: 200px;
+    max-width: 50%;
+    margin-left: 20px;
     padding: 2px;
     text-align: center;
+    
 }
  label {
-     padding: 0px;
+     font-size: 200%;
+     color: black;
+     text-decoration: underline;
  }
 
- .container {
-     background-color: white;
-     border: 1px solid black;
-     border-radius: 7px;
-     margin: 2%;
-     margin-top: 80px;
-     width: 50%;
-    
-    
- }
+#submitBtn {
+    text-align: center;
+    font-size: 200%;
+    align-items: center;
+    width: auto;
+    border: none;
+    border-radius: 5cm;
+    background-image: linear-gradient(rgba(0, 255, 255, 0.918), white);
+}
