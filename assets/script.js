@@ -79,6 +79,7 @@ let score;
 let timerInterval;
 let finalScore;
 let initials;
+let lastScore;
 
 
 
@@ -89,7 +90,8 @@ startButton.addEventListener("click", startQuiz);
 
 
 //Create a start function to start the quiz when Start Quiz is clicked
-//Current question index is at 0, score it at 0, the startButton is hidden while the questions are displayed on the screen
+//Current question index is at 0, score it at 0, setTimer function is called to set the timer, 
+//the startButton is hidden while the questions are displayed on the screen
 
 function startQuiz() {
     setTimer();
@@ -101,7 +103,7 @@ function startQuiz() {
     nextQuestion();
 }
 
-//Function for the timer, starts at 45 seconds, changes the HTML timer content and displays seconds left
+//Function for the timer, starts at 45 seconds, changes the HTML timer content and displays seconds left, the timer is counting down so -- from seconds left
 //If timer gets to 0 an alert will be displayed letting the player know they ran out of time and endQuiz function will be enabled
 
 function setTimer() {
@@ -170,6 +172,7 @@ function selectAnswer(usersChoice) {
 }
 
 //When the last question is hit or the timer runs out, the endQuiz clears the timer and goes to the score input page
+//The score input page (scoreContainer) is changed from display of hidden to display of grid
 function endQuiz() {
     scoreContainer.style.display = "grid";
     clearInterval(timerInterval);
@@ -184,23 +187,42 @@ function showScore() {
     questionSection.classList.add('hide');
     scoreEl.innerHTML = "You got  " + score + " out of  " + questions.length + " right!";
 }
-submitButton.addEventListener("click", submitScore);
+
 //function to submit the user initals and final score into the database to keep a record of highscores
-function submitScore() {
-    //preventDefualt to keep the page from refreshing (javascript default) when the button is pushed and data is submitted
+//can not figure out how to do this part, followed excersises from class to try to format it out
+
+function saveScore() {
+
+    //objects of the users inpus to be used to be saved to the localstorage
+    var highScore = {
+        initials: initialsInput.text,
+        finalScore: scoreInput.text,
+    };
+
+    //function to put highscore into the localstorage 
+    localStorage.setItem("highScore", JSON.stringify(highScore));
+
+};
+//function to renderScore by using the highScore collected from the last function and getting the item from the local storage
+
+function renderScore() {
+    lastScore = JSON.parse(localStorage.getItem("highScore"))
+    //If last score is coming up as nothing pull elements from the HTML otherwise cancel
+    if (lastScore !== null) {
+        document.getElementById("saved-inital").innerHTML = highScore.initials;
+        document.getElementById("saved-score").innerHTML = highScore.finalScore;
+
+    } else {
+        return;
+    }
+    //clicking the submit button will save and render the score
     submitButton.addEventListener("click", function (event) {
         event.preventDefault();
-        //objects of the users inpus to be used to be saved to the localstorage
-        var highScore = {
-            initials: initialsInput.value,
-            finalScore: scoreInput.value,
-        };
-        //function to put highscore into the localstorage 
-        localStorage.setItem("highScore", JSON.stringify(highScore));
+        saveScore();
+        renderScore();
+    })
 
-    });
 }
-
 
 
 

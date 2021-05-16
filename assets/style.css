@@ -42,7 +42,6 @@ to create the neon glow in the title*/
 
 
 /*area that holds the actual quiz questions and answers*/
-
 #quiz-container {
     align-items: center;
     width: 80%;
@@ -54,7 +53,6 @@ to create the neon glow in the title*/
 
 /*sylting of the quiz answer buttons, creating a blue to teal gradient background and rounding out the edges to give the buttons 
 a rounded look */
-
 .buttons {
     font-size: 250%;
     text-align: center;
@@ -146,4 +144,14 @@ input {
     font-size: 200%;
     color: white;
     text-align: center;
+}
+
+/*styling of the card where scores and initals should be saved*/
+.card {
+    margin-left: 750px;
+    padding: 20px;
+    font-size: 200%;
+    color: white;
+    text-align: center;
+    display: none;
 }
