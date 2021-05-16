@@ -14,7 +14,7 @@ https://lhaykus.github.io/video-game-quiz/
 
 
 The quiz begins once the user clicks on "Start Quiz", the first question is shown and the timer of 45 seconds begins counting down.
-When the user gets an answer right, their score goes up by 1. However, if the user chooses the wrong answer, 10 seconds is deducting from the timer. 
+When the user gets an answer right, their score goes up by 1. However, if the user chooses the wrong answer, 10 seconds is deducted from the timer. 
 When the user is done with all the questiions, a score page is shown where the user can see how well they did in the quiz and leave their name and score.
 
 
