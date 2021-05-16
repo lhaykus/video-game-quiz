@@ -6,6 +6,8 @@ Are you a nerd like me? Do you love anything and everything fantasy and sci-fi r
 Final Quiz
 
 
+!["FinalQuiz"](./assets/images/quiz.gif)
+
 
 
 
