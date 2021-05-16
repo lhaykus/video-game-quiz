@@ -3,7 +3,7 @@
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-    background-image: url(./images/gamer3.jpg);
+    background-image: url(./images/gamer8.jpg);
     background-size: cover
 }
 
@@ -30,12 +30,12 @@ to create the neon glow in the title*/
 }
 
 
-/*styling for the start button, created a pink to white gradient background*/
+/*styling for the start button*/
 #startButton {
     font-size: 400%;
     text-align: center;
     border: none;
-    background-image: linear-gradient(white, magenta);
+    color: white;
     border-radius: 5cm;
     width: 25%;
 }
