@@ -97,6 +97,7 @@ startButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
     setTimer();
+    
     console.log("start");
     startButton.classList.add('hide');
     currentQuestion = 0;

@@ -2,7 +2,8 @@
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-    background-image: url();
+    background-image: url(./images/gamer3.jpg);
+    background-size: cover
 
 
 
@@ -32,6 +33,8 @@ body {
     background-image: linear-gradient(white, magenta);
     border-radius: 5cm;
     width: 25%;
+    
+
 
 }
 
@@ -40,6 +43,7 @@ body {
     width: 80%;
     display: grid;
     margin: 200px;
+    background: none;
 }
 
 
@@ -70,6 +74,7 @@ body {
     margin-right: 200px;
     margin-bottom: 50px;
     color: white;
+    background: none;
 }
 
 .hide {
@@ -88,9 +93,9 @@ body {
 }
 
 input {
-    background-color: white;
+    color:white;
     border-radius: 3px;
-    border: solid black;
+    border: solid white;
     font-size: 200%;
     line-height: 30px;
     max-width: 50%;
