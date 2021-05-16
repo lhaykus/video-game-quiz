@@ -4,7 +4,6 @@ const startButton = document.getElementById("startButton");
 const submitButton = document.getElementById("submitBtn");
 const quiz = document.getElementById("quiz-container");
 const questionEl = document.getElementById("question");
-//const buttons = document.getElementsByClassName("buttons");
 const questionSection = document.getElementById("question-section");
 const scoreEl = document.getElementById("score");
 const images = document.getElementById("images");
@@ -74,10 +73,7 @@ const questions = [
 //Declaring variables
 const lastQuestion = questions.length - 1;
 let currentQuestion = 0;
-//let choices = " ";
 let answer = "none";
-//let button;
-//let choice;
 let usersChoice;
 let score;
 let timerInterval;
@@ -97,7 +93,6 @@ startButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
     setTimer();
-    
     console.log("start");
     startButton.classList.add('hide');
     currentQuestion = 0;
@@ -130,24 +125,21 @@ function setTimer() {
 
 
 //Function to go to the next question
-//Displaying the current question index in the questions array
+//Displays the current question index in the questions array
 function nextQuestion() {
     showQuestion(questions[currentQuestion]);
 }
 
 //Function to show questions on screen 
 function showQuestion(question) {
-    //Displaying the question by changing the text of HTML questionEl by grabbing the question text out of the object 
+    //Displays the question by changing the text of HTML questionEl by grabbing the question text out of the object 
     questionEl.textContent = question.question;
-    // Displaying the answers and images that go with the current question the user is on 
+    // Displays the answers and images that go with the current question the user is on 
     images.innerHTML = "<img src=" + questions[currentQuestion].imgSrc + ">";
     A.textContent = questions[currentQuestion].A;
     B.textContent = questions[currentQuestion].B;
     C.textContent = questions[currentQuestion].C;
     D.textContent = questions[currentQuestion].D;
-    // if (currentQuestion === lastQuestion) {
-    //     clearInterval(timer);
-    //     endQuiz();
 }
 
 
@@ -161,14 +153,15 @@ function selectAnswer(usersChoice) {
     if (usersChoice === questions[currentQuestion].answer) {
         score++;
     }
+    //if userChoice is not equal to the right answer, 10 seconds deducted off the timer
     if (usersChoice !== questions[currentQuestion].answer) {
         secondsLeft = secondsLeft - 10;
     }
-    //If the current question is the last question, endQuiz
+    //If the current question is the last question, endQuiz 
     if (currentQuestion >= lastQuestion) {
         clearInterval(timerInterval);
         endQuiz();
-        //Else if the current question is not the last question, the next question will be showed 
+        //Else if the current question is not the last question, the next question will be showed and score will be console.log
     } else {
         currentQuestion++;
         nextQuestion();
@@ -176,39 +169,39 @@ function selectAnswer(usersChoice) {
     }
 }
 
-//When the last question is hit or the timer runs out, the endQuiz clears the timer
+//When the last question is hit or the timer runs out, the endQuiz clears the timer and goes to the score input page
 function endQuiz() {
-    scoreContainer.style.display="grid";
+    scoreContainer.style.display = "grid";
     clearInterval(timerInterval);
     showScore();
 
 }
 
-
+//function to show user how many questions they got right
+//hiding the questionSection so that the showScore page can be visible
+//the text content of the score HTML is changed to show how many questions the user got right out of the total question amount
 function showScore() {
     questionSection.classList.add('hide');
     scoreEl.innerHTML = "You got  " + score + " out of  " + questions.length + " right!";
- 
-    submitButton.addEventListener("click", submitScore); 
-    
 }
+submitButton.addEventListener("click", submitScore);
+//function to submit the user initals and final score into the database to keep a record of highscores
 function submitScore() {
+    //preventDefualt to keep the page from refreshing (javascript default) when the button is pushed and data is submitted
+    submitButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        //objects of the users inpus to be used to be saved to the localstorage
+        var highScore = {
+            initials: initialsInput.value,
+            finalScore: scoreInput.value,
+        };
+        //function to put highscore into the localstorage 
+        localStorage.setItem("highScore", JSON.stringify(highScore));
 
-
-submitButton.addEventListener("click", function(event) {
-    event.preventDefault();
-
-    var highScore = {
-        initials: initialsInput.value,
-        finalScore: scoreInput.value,
-    };
-    
-    localStorage.setItem("highScore", JSON.stringify(highScore));
-
-});
+    });
 }
 
-    
+
 
 
 
