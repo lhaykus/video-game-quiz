@@ -13,13 +13,11 @@
 <header>
 
     <div id="title">Pop Culture Quiz</div>
-
-
     <div id="timer" style=text-align:right> Timer: </div>
 </header>
 
 <body>
-
+<section>
     <div id="quiz-container">
         <div id="question-section" class="hide">
 
@@ -42,12 +40,25 @@
         </div>
     </div>
     </div>
+</section>
 
     <div class="otherButtons">
         <button id="startButton">Start Quiz</button>
     </div>
-    <div id="score"></div>
     
+    <section>
+        <div id="score"></div>
+        <div class="container" class="hide">
+            <label for="card">High Scores</label>
+            <div id="score-container" class="hide">
+                <span id="scoreInput"></span>
+                <label for="initials">Your Initials</label>
+                <input type="text" name="initials" id="initials" />
+                <label for="scoreRecord">Your Score</label>
+                <input type="text" name="scoreRecord" id="scoreRecord" />
+            </div>
+        </div>
+    </section>
     <script src="assets/script.js"></script>
 </body>
 

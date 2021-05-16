@@ -7,6 +7,9 @@ const buttons = document.getElementsByClassName("buttons");
 const questionSection = document.getElementById("question-section");
 const scoreEl= document.getElementById ("score");
 const images = document.getElementById("images");
+const scoreContainer = document.getElementById('score-container');
+const initialsInput = document.getElementById("initals");
+const scoreInput = document.getElementById("scoreRecord");
 const A = document.getElementById("A");
 const B = document.getElementById("B");
 const C = document.getElementById("C");
@@ -61,20 +64,22 @@ const questions = [
     D: "Butterbeer",
     answer: "B"
 },
+
 ];
 
 
 //Declaring variables
-const lastQuestion = question.length - 1;
-let currentQuestion;
+const lastQuestion = questions.length-1;
+let currentQuestion =0;
 //let choices = " ";
 let answer = "none";
 let button;
 let choice;
 let usersChoice;
 let score;
+let timerInterval;
 
-
+scoreContainer.classList.add('hide');
 
 //When the start button is clicked, the quiz begins
 startButton.addEventListener("click", startQuiz)
@@ -103,7 +108,7 @@ function setTimer() {
         secondsLeft--;
         timer.textContnet = secondsLeft;
 
-        if (secondsLeft <= 0) {
+        if (secondsLeft === 0) {
             clearInterval(timerInterval);
             alert("Time's Up");
             endQuiz();
@@ -118,13 +123,11 @@ function setTimer() {
 
 //Function to go to the next question
 //Displaying the current question index in the questions array
-
 function nextQuestion() {
     showQuestion(questions[currentQuestion]);
 }
 
 //Function to show questions on screen 
-
 function showQuestion(question) {
     //Displaying the question by changing the text of HTML questionEl by grabbing the question text out of the object 
     questionEl.textContent = question.question;
@@ -155,6 +158,7 @@ function selectAnswer(usersChoice) {
     }
     //If the current question is the last question, endQuiz
     if (currentQuestion === lastQuestion) {
+        clearInterval(timerInterval);
         endQuiz();
         //Else if the current question is not the last question, the next question will be showed 
     } else {
@@ -166,5 +170,15 @@ function selectAnswer(usersChoice) {
 
 //When the last question is hit or the timer runs out, the endQuiz clears the timer
 function endQuiz() {
-    clearInterval(timer);
+    scoreContainer.classList.remove('hide');
+    clearInterval(timerInterval);
+    showScore();
+
+}
+
+function showScore() {
+    questionSection.classList.add('hide');
+   //scoreContainer.classList.remove("hide");
+
+
 }

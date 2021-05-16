@@ -29,9 +29,7 @@ body {
 }
 
 #quiz-container {
-    display: flex;
-    flex-direction: center;
-    justify-content: center;
+    align-items: center;
     width: 80%;
     display: grid;
     margin: 200px;
@@ -73,3 +71,33 @@ body {
     text-align: center;
 }
 
+#score-container {
+    margin-top: 1px;
+    margin-bottom: 2px;
+
+}
+
+input {
+    background-color: white;
+    border-radius: 3px;
+    font-size: 100%;
+    line-height: 10px;
+    max-width: 100%;
+    margin-left: 200px;
+    padding: 2px;
+    text-align: center;
+}
+ label {
+     padding: 0px;
+ }
+
+ .container {
+     background-color: white;
+     border: 1px solid black;
+     border-radius: 7px;
+     margin: 2%;
+     margin-top: 80px;
+     width: 50%;
+    
+    
+ }
