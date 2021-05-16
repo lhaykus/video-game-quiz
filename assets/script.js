@@ -1,12 +1,12 @@
 //Grabbing elements from the HTML document
 const timer = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
-const submitButton =document.getElementById("submitBtn");
+const submitButton = document.getElementById("submitBtn");
 const quiz = document.getElementById("quiz-container");
 const questionEl = document.getElementById("question");
-const buttons = document.getElementsByClassName("buttons");
+//const buttons = document.getElementsByClassName("buttons");
 const questionSection = document.getElementById("question-section");
-const scoreEl= document.getElementById ("score");
+const scoreEl = document.getElementById("score");
 const images = document.getElementById("images");
 const scoreContainer = document.getElementById('score-container');
 const initialsInput = document.getElementById("initals");
@@ -19,73 +19,76 @@ const D = document.getElementById("D");
 
 
 
+
 //Create an array with objects of the questions, answers and possible answers
 const questions = [
     {
-    question: "Who created the T-virus in Resident Evil?",
-    imgSrc: "./assets/images/resident-evil.png",
-    A: "The Racoon Corporation",
-    B: "The Umbrella Corporation",
-    C: "Dynamite Corporation",
-    D: "Boomerang Corporation",
-    answer: "B"
+        question: "Who created the T-virus in Resident Evil?",
+        imgSrc: "./assets/images/resident-evil.png",
+        A: "The Racoon Corporation",
+        B: "The Umbrella Corporation",
+        C: "Dynamite Corporation",
+        D: "Boomerang Corporation",
+        answer: "B"
 
-}, {
-    question: "What is the alien race that has to battle Predator in Alien vs Predator called?",
-    imgSrc: "./assets/images/alien.jpg",
-    A: "Kaminoan",
-    B: "Polymorph",
-    C: "Xenomorph",
-    D: "Ortolan",
-    answer: "C"
-},
-{
-    question: "In Harry Potter, what was the name of Hagrid's hippogriff?",
-    imgSrc: "./assets/images/buckbeak2.jpg",
-    A: "Buckbeak",
-    B: "Fawkes",
-    C: "Aragog",
-    D: "Hedwig",
-    answer: "A"
-},
-{
-    question: "In Lord of the Rings, who was NOT a member of the fellowship of the ring?",
-    imgSrc: "./assets/images/fellowship.jpg",
-    A: "Aragorn",
-    B: "Gimli",
-    C: "Frodo",
-    D: "Eowyn",
-    answer: "D"
-},
-{
-    question: "In Futurama, what is Fry's favorite soft drink that is highly addictive?",
-    imgSrc: "./assets/images/futurama2.jpg",
-    A: "Nuka-Cola",
-    B: "Slurm",
-    C: "Buzz Cola",
-    D: "Butterbeer",
-    answer: "B"
-},
+    }, {
+        question: "What is the alien race that has to battle Predator in Alien vs Predator called?",
+        imgSrc: "./assets/images/alien.jpg",
+        A: "Kaminoan",
+        B: "Polymorph",
+        C: "Xenomorph",
+        D: "Ortolan",
+        answer: "C"
+    },
+    {
+        question: "In Harry Potter, what was the name of Hagrid's hippogriff?",
+        imgSrc: "./assets/images/buckbeak2.jpg",
+        A: "Buckbeak",
+        B: "Fawkes",
+        C: "Aragog",
+        D: "Hedwig",
+        answer: "A"
+    },
+    {
+        question: "In Lord of the Rings, who was NOT a member of the fellowship of the ring?",
+        imgSrc: "./assets/images/fellowship.jpg",
+        A: "Aragorn",
+        B: "Gimli",
+        C: "Frodo",
+        D: "Eowyn",
+        answer: "D"
+    },
+    {
+        question: "In Futurama, what is Fry's favorite soft drink that is highly addictive?",
+        imgSrc: "./assets/images/futurama2.jpg",
+        A: "Nuka-Cola",
+        B: "Slurm",
+        C: "Buzz Cola",
+        D: "Butterbeer",
+        answer: "B"
+    },
 
 ];
 
 
 //Declaring variables
-const lastQuestion = questions.length-1;
-let currentQuestion =0;
+const lastQuestion = questions.length - 1;
+let currentQuestion = 0;
 //let choices = " ";
 let answer = "none";
-let button;
-let choice;
+//let button;
+//let choice;
 let usersChoice;
 let score;
 let timerInterval;
+let finalScore;
+let initials;
 
 
 
 //When the start button is clicked, the quiz begins
 startButton.addEventListener("click", startQuiz);
-submitButton.addEventListener("click", )
+
 
 
 
@@ -141,10 +144,10 @@ function showQuestion(question) {
     B.textContent = questions[currentQuestion].B;
     C.textContent = questions[currentQuestion].C;
     D.textContent = questions[currentQuestion].D;
-   // if (currentQuestion === lastQuestion) {
-   //     clearInterval(timer);
-   //     endQuiz();
-    }
+    // if (currentQuestion === lastQuestion) {
+    //     clearInterval(timer);
+    //     endQuiz();
+}
 
 
 
@@ -158,10 +161,10 @@ function selectAnswer(usersChoice) {
         score++;
     }
     if (usersChoice !== questions[currentQuestion].answer) {
-        secondsLeft = secondsLeft-10;
+        secondsLeft = secondsLeft - 10;
     }
     //If the current question is the last question, endQuiz
-    if (currentQuestion === lastQuestion) {
+    if (currentQuestion >= lastQuestion) {
         clearInterval(timerInterval);
         endQuiz();
         //Else if the current question is not the last question, the next question will be showed 
@@ -174,15 +177,37 @@ function selectAnswer(usersChoice) {
 
 //When the last question is hit or the timer runs out, the endQuiz clears the timer
 function endQuiz() {
-    scoreContainer.classList.remove('hide');
+    scoreContainer.style.display="grid";
     clearInterval(timerInterval);
     showScore();
 
 }
 
+
 function showScore() {
     questionSection.classList.add('hide');
-   //scoreContainer.classList.remove("hide");
-
-
+    scoreEl.innerHTML = "You got  " + score + " out of  " + questions.length + " right!";
+ 
+    submitButton.addEventListener("click", submitScore); 
+    
 }
+function submitScore() {
+
+
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var highScore = {
+        initials: initialsInput.value,
+        finalScore: scoreInput.value,
+    };
+    
+    localStorage.setItem("highScore", JSON.stringify(highScore));
+
+});
+}
+
+    
+
+
+
