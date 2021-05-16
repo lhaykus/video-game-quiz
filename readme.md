@@ -21,6 +21,17 @@ When the user is done with all the questiions, a score page is shown where the u
 
 
 
+
+
+
+
+# Bonus
+
+I added this project to my portfolio
+
+!["added-to-portfolio](./assets/images/portfolio.gif)
+
+
 # Sources:
 
 To create the neon glow on the title:   https://www.tiny.cloud/blog/neon-fonts-and-glowing-text-get-started-in-two-steps/
