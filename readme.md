@@ -20,7 +20,10 @@ When the user is done with all the questiions, a score page is shown where the u
 
 
 
-
+# Technologies Used
+* Javascript 
+* HTML
+* CSS
 
 
 
